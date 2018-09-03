@@ -7,11 +7,23 @@
 ### 2 [微博登陆](http:// open.weibo.com) [微博iossdk-github地址](https://github.com/sinaweibosdk/weibo_ios_sdk)
 
 [详细文档参考官方指南]()
-1.注册成为开发者，创建移动应用
 
+1.注册成为开发者，创建移动应用
+  ![注册](https://ws1.sinaimg.cn/large/006tNbRwly1fuwhj3n0jyj31580e8ave.jpg)
+  
+  ![ios](https://ws4.sinaimg.cn/large/006tNbRwly1fuwhldqtnzj30rg05utcm.jpg)
+  
 2.设定授权回调页
+  ![授权](https://ws4.sinaimg.cn/large/006tNbRwly1fuwhlq29t2j31540nwk1k.jpg)
 3.设定Apple ID 和 Bundle ID
+  ![appid](https://ws4.sinaimg.cn/large/006tNbRwly1fuwhmhc2jcj315g0lyqaq.jpg)
+  
+  ![bundle id](https://ws4.sinaimg.cn/large/006tNbRwly1fuwhn09bdhj315m0aun1z.jpg)
+  
+  
 4.设置工程回调URL Scheme
+  ![url scheme](https://ws1.sinaimg.cn/large/006tNbRwly1fuwhngwdk8j313u0boae0.jpg)
+  
 5.添加SDK文件到工程
 
 快速集成 WeiboSDK支持使用Cocoapods集成，请在Podfile中添加以下语句
@@ -50,6 +62,18 @@ pod "Weibo_SDK", :git => "https://github.com/sinaweibosdk/weibo_ios_sdk.git"
     return [WeiboSDK handleOpenURL:url delegate:self ];
 }
 ```
+
+问题：1
+-canOpenURL: failed for URL: “sinaweibo” - error:”This app is not allowed to query for scheme xx 
+-canOpenURL: failed for URL: “weibosdk” - error:”This app is not allowed to query for scheme xx
+
+原因：缺少白名单字段
+
+解决方式：在plist中的LSApplicationQueriesSchemes添加字段 
+
+![白名单](https://img-blog.csdn.net/20170927162704270?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvRmFudGFzeV9KdW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+
 ### 3 QQ登陆
 
 
