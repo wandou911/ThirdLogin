@@ -176,7 +176,9 @@ AppDelegate.m
 
 4. 新增⼀一条URL scheme:选中⼯工程Target -> Info -> URLTypes;新的scheme命名为: tencent+appid(ex: tencent123456)
 
-5. 添加⽩白名单:LSApplicationQueriesSchemes新增⽩白名单，详⻅见demo
+5. 添加白名单:LSApplicationQueriesSchemes新增⽩白名单，详⻅见demo
+
+![白名单](https://ws4.sinaimg.cn/large/006tNbRwly1fuxhnmm925j31c00lwdlu.jpg)
 
 ```
 <key>LSApplicationQueriesSchemes</key>
