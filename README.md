@@ -71,8 +71,7 @@ pod "Weibo_SDK", :git => "https://github.com/sinaweibosdk/weibo_ios_sdk.git"
 
 解决方式：在plist中的LSApplicationQueriesSchemes添加字段 
 
-![白名单](https://img-blog.csdn.net/20170927162704270?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvRmFudGFzeV9KdW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-
+![白名单](https://ws2.sinaimg.cn/large/006tNbRwly1fux94mjsmwj30h30aq75r.jpg)
 
 ### 3 QQ登陆
 
