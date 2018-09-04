@@ -37,7 +37,7 @@ pod "Weibo_SDK", :git => "https://github.com/sinaweibosdk/weibo_ios_sdk.git"
 8.定义应用 SSO 登录或者 Oauth2.0 认证所需的几个常量
 
 ```
-#define kAppKey         @"4059482444"
+#define kAppKey         @"2045436852"
 #define kRedirectURI    @"https://api.weibo.com/oauth2/default.html"
 ```
 9.注册 appkey(clientid) 
