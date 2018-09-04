@@ -4,7 +4,7 @@
 ### 1 微信登陆
 
 
-### 2 [微博登陆](http://open.weibo.com)  [微博ios-sdk-github地址](https://github.com/sinaweibosdk/weibo_ios_sdk)
+### 2 微博登陆(http://open.weibo.com)  [微博ios-sdk-github地址](https://github.com/sinaweibosdk/weibo_ios_sdk)
 
 [详细文档参考官方指南]()
 
@@ -159,5 +159,147 @@ AppDelegate.m
 ![白名单](https://ws2.sinaimg.cn/large/006tNbRwly1fux94mjsmwj30h30aq75r.jpg)
 
 ### 3 QQ登陆
+
+#### 一 登陆QQ互联申请appid(https://connect.qq.com)
+
+![QQ互联](https://ws1.sinaimg.cn/large/006tNbRwly1fuxd22ugx8j31kw0wxn49.jpg)
+
+#### 二 集成
+
+1. 下载并解压SDK:[下载链接](http://wiki.connect.qq.com/sdk下载)
+
+2. 拖拽 TencentOpenAPI ⽂文件到Xcode⼯工程内(请勾选 Copy items if needed);或拷⻉贝SDK文件到⼯工程的物理理⽬目录下，选中⼯工程Target -> General -> Linked Frameworks and Libraries -> Add Other 然后找到对应⽂文件添加即可
+
+3. 添加依赖库 SystemConfiguration.framework
+
+4. 新增⼀一条URL scheme:选中⼯工程Target -> Info -> URLTypes;新的scheme命名为: tencent+appid(ex: tencent123456)
+
+5. 添加⽩白名单:LSApplicationQueriesSchemes新增⽩白名单，详⻅见demo
+
+6. Appdelegate的handleOpenURL代理理⽅方法中中添加处理理回调的代码
+
+
+```
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/QQApiInterfaceObject.h>
+
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    
+    //[QQApiInterface handleOpenURL:url delegate:(id<QQApiInterfaceDelegate>)[QQApiShareEntry class]];
+    
+    if (YES == [TencentOAuth CanHandleOpenURL:url])
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Where from" message:url.description delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil];
+        [alertView show];
+        return [TencentOAuth HandleOpenURL:url];
+    }
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    //[QQApiInterface handleOpenURL:url delegate:(id<QQApiInterfaceDelegate>)[QQApiShareEntry class]];
+    
+    if (YES == [TencentOAuth CanHandleOpenURL:url])
+    {
+        return [TencentOAuth HandleOpenURL:url];
+    }
+    return YES;
+}
+```
+7. QQ登陆相关实现逻辑
+
+ViewController.m 
+```
+#import "ViewController.h"
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterfaceObject.h>
+
+
+@interface ViewController ()<TencentSessionDelegate>
+{
+    TencentOAuth *_tencentOAuth;
+    NSMutableArray *_permissionArray;   //权限列表
+}
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (IBAction)qqLogin:(id)sender {
+    //1107812292
+    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"1107812292" andDelegate:self];
+    _permissionArray = [NSMutableArray arrayWithObjects:
+                        kOPEN_PERMISSION_GET_SIMPLE_USER_INFO,
+                        nil];
+    [_tencentOAuth authorize:_permissionArray];
+}
+
+#pragma TencentSessionDelegate
+/**
+ * [该逻辑未实现]因token失效而需要执行重新登录授权。在用户调用某个api接口时，如果服务器返回token失效，则触发该回调协议接口，由第三方决定是否跳转到登录授权页面，让用户重新授权。
+ * \param tencentOAuth 登录授权对象。
+ * \return 是否仍然回调返回原始的api请求结果。
+ * \note 不实现该协议接口则默认为不开启重新登录授权流程。若需要重新登录授权请调用\ref TencentOAuth#reauthorizeWithPermissions: \n注意：重新登录授权时用户可能会修改登录的帐号
+ */
+- (BOOL)tencentNeedPerformReAuth:(TencentOAuth *)tencentOAuth{
+    return YES;
+}
+- (BOOL)tencentNeedPerformIncrAuth:(TencentOAuth *)tencentOAuth withPermissions:(NSArray *)permissions{
+    
+    // incrAuthWithPermissions是增量授权时需要调用的登录接口
+    // permissions是需要增量授权的权限列表
+    [tencentOAuth incrAuthWithPermissions:permissions];
+    return NO; // 返回NO表明不需要再回传未授权API接口的原始请求结果；
+    // 否则可以返回YES
+}
+-(void)tencentDidLogin{
+    NSLog(@"----ok-----");
+    /** Access Token凭证，用于后续访问各开放接口 */
+    if (_tencentOAuth.accessToken) {
+        
+        //获取用户信息。 调用这个方法后，qq的sdk会自动调用
+        //- (void)getUserInfoResponse:(APIResponse*) response
+        //这个方法就是 用户信息的回调方法。
+        
+        [_tencentOAuth getUserInfo];
+    }else{
+        
+        NSLog(@"accessToken 没有获取成功");
+    }
+}
+//-(NSArray *)getAuthorizedPermissions:(NSArray *)permissions withExtraParams:(NSDictionary *)extraParams{
+//    NSLog(@"----%@********%@-----",permissions,extraParams);
+//    return permissions;
+//}
+- (void)getUserInfoResponse:(APIResponse*) response{
+    NSLog(@"*********");
+    NSLog(@" response %@",response);
+    NSLog(@"*********");
+}
+
+-(void)tencentDidNotLogin:(BOOL)cancelled{
+    if (cancelled) {
+        NSLog(@" 用户点击取消按键,主动退出登录");
+    }else{
+        NSLog(@"其他原因， 导致登录失败");
+    }
+}
+-(void)tencentDidNotNetWork{
+    NSLog(@"没有网络了， 怎么登录成功呢");
+}
+
+
+@end
+```
+
 
 
