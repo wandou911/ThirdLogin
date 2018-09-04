@@ -176,6 +176,14 @@ AppDelegate.m
 
 5. 添加⽩白名单:LSApplicationQueriesSchemes新增⽩白名单，详⻅见demo
 
+```
+<key>LSApplicationQueriesSchemes</key>
+	<array>
+        <string>mqqOpensdkSSoLogin</string>
+        <string>mqqopensdkapiV2</string>
+        </array>
+```
+
 6. Appdelegate的handleOpenURL代理理⽅方法中中添加处理理回调的代码
 
 
