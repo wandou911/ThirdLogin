@@ -71,6 +71,7 @@ pod "Weibo_SDK", :git => "https://github.com/sinaweibosdk/weibo_ios_sdk.git"
 ```
 方法的具体实现：
 
+AppDelegate.h
 ```
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -82,6 +83,11 @@ pod "Weibo_SDK", :git => "https://github.com/sinaweibosdk/weibo_ios_sdk.git"
 
 @end
 
+```
+
+AppDelegate.m
+
+```
 - (void)didReceiveWeiboRequest:(WBBaseRequest *)request
 {
     
