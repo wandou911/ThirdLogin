@@ -31,6 +31,7 @@
 pod "Weibo_SDK", :git => "https://github.com/sinaweibosdk/weibo_ios_sdk.git" 
 ```
 6.在工程中引入静态库之后,需要在编译时添加 –objC 编译选项
+
 ![–objC编译选项](https://ws2.sinaimg.cn/large/006tNbRwly1fuxchgrosfj315a0bqdn3.jpg)
   
 7.添加FrameWork文件到工程
