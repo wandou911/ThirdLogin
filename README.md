@@ -168,7 +168,9 @@ AppDelegate.m
 
 1. 下载并解压SDK:[下载链接](http://wiki.connect.qq.com/sdk下载)
 
-2. 拖拽 TencentOpenAPI ⽂文件到Xcode⼯工程内(请勾选 Copy items if needed);或拷⻉贝SDK文件到⼯工程的物理理⽬目录下，选中⼯工程Target -> General -> Linked Frameworks and Libraries -> Add Other 然后找到对应⽂文件添加即可
+2. 拖拽 TencentOpenAPI.framework 文件到Xcode⼯工程内(请勾选 Copy items if needed);或拷⻉贝SDK文件到⼯工程的物理理⽬目录下，选中⼯工程Target -> General -> Linked Frameworks and Libraries -> Add Other 然后找到对应⽂文件添加即可
+
+![添加TencentOpenAPI](https://ws4.sinaimg.cn/large/006tNbRwly1fuxhi6l6vwj31kw0qkn7x.jpg)
 
 3. 添加依赖库 SystemConfiguration.framework
 
