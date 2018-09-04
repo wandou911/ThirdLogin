@@ -145,6 +145,16 @@ AppDelegate.m
 原因：缺少白名单字段
 
 解决方式：在plist中的LSApplicationQueriesSchemes添加字段 
+```
+<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>sinaweibo</string>
+		<string>weibosdk</string>
+		<string>weibosdk2.5</string>
+		<string>sinaweibohd</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+```
 
 ![白名单](https://ws2.sinaimg.cn/large/006tNbRwly1fux94mjsmwj30h30aq75r.jpg)
 
