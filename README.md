@@ -173,7 +173,11 @@ AppDelegate.m
 
 ![应用信息](https://ws3.sinaimg.cn/large/006tNbRwly1fuxim0tk6oj31kw11bn3i.jpg)
 
-4.查看应用appid
+4.完善应用信息
+
+![完善](https://ws2.sinaimg.cn/large/006tNbRwly1fuxir8pp0yj31kw13mtej.jpg)
+
+5.查看应用appid
 
 ![appid](https://ws3.sinaimg.cn/large/006tNbRwly1fuximct24qj31js0ncjwi.jpg)
 
