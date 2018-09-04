@@ -165,7 +165,7 @@ AppDelegate.m
 
 ![QQ互联](https://ws1.sinaimg.cn/large/006tNbRwly1fuxd22ugx8j31kw0wxn49.jpg)
 
-2.创建应用
+2.创建移动应用
 
 ![创建应用](https://ws3.sinaimg.cn/large/006tNbRwly1fuxilmg8vij31kw0x6jx9.jpg)
 
@@ -195,9 +195,6 @@ AppDelegate.m
 4. 新增⼀一条URL scheme:选中⼯工程Target -> Info -> URLTypes;新的scheme命名为: tencent+appid(ex: tencent123456)
 
 5. 添加白名单:LSApplicationQueriesSchemes新增⽩白名单，详⻅见demo
-
-![白名单](https://ws4.sinaimg.cn/large/006tNbRwly1fuxhnmm925j31c00lwdlu.jpg)
-
 ```
 <key>LSApplicationQueriesSchemes</key>
 	<array>
@@ -205,6 +202,8 @@ AppDelegate.m
         <string>mqqopensdkapiV2</string>
         </array>
 ```
+
+![白名单](https://ws4.sinaimg.cn/large/006tNbRwly1fuxhnmm925j31c00lwdlu.jpg)
 
 6. Appdelegate的handleOpenURL代理理⽅方法中中添加处理理回调的代码
 
@@ -265,7 +264,7 @@ ViewController.m
 }
 
 - (IBAction)qqLogin:(id)sender {
-    //1107812292
+    //AppId需替换成自己申请的appid
     _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"1107812292" andDelegate:self];
     _permissionArray = [NSMutableArray arrayWithObjects:
                         kOPEN_PERMISSION_GET_SIMPLE_USER_INFO,
