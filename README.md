@@ -161,8 +161,22 @@ AppDelegate.m
 ### 3 QQ登陆
 
 #### 一 登陆QQ互联申请appid(https://connect.qq.com)
+1.登陆qq互联
 
 ![QQ互联](https://ws1.sinaimg.cn/large/006tNbRwly1fuxd22ugx8j31kw0wxn49.jpg)
+
+2.创建应用
+
+![创建应用](https://ws3.sinaimg.cn/large/006tNbRwly1fuxilmg8vij31kw0x6jx9.jpg)
+
+3.填入应用信息
+
+![应用信息](https://ws3.sinaimg.cn/large/006tNbRwly1fuxim0tk6oj31kw11bn3i.jpg)
+
+4.查看应用appid
+
+![appid](https://ws3.sinaimg.cn/large/006tNbRwly1fuximct24qj31js0ncjwi.jpg)
+
 
 #### 二 集成
 
