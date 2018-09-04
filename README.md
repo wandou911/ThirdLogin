@@ -4,7 +4,7 @@
 ### 1 微信登陆
 
 
-### 2 [微博登陆](http:// open.weibo.com) [微博ios-sdk-github地址](https://github.com/sinaweibosdk/weibo_ios_sdk)
+### 2 [微博登陆](http://open.weibo.com)  [微博ios-sdk-github地址](https://github.com/sinaweibosdk/weibo_ios_sdk)
 
 [详细文档参考官方指南]()
 
