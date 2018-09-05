@@ -137,6 +137,7 @@ AppDelegate.m
     }
 }
 ```
+#### FAQ
 
 问题：1
 -canOpenURL: failed for URL: “sinaweibo” - error:”This app is not allowed to query for scheme xx 
@@ -329,6 +330,31 @@ ViewController.m
 
 @end
 ```
+#### FAQ
 
+问题1 打开是网友版QQ登陆页面 而不是本地QQ登陆
+
+原因：本地没有安装QQ或者缺少白名单字段
+
+解决方式：在plist中的LSApplicationQueriesSchemes添加字段 
+
+![白名单](https://ws4.sinaimg.cn/large/006tNbRwly1fuxhnmm925j31c00lwdlu.jpg)
+
+```
+<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>mqqOpensdkSSoLogin</string>
+		<string>mqqopensdkapiV2</string>
+	</array>
+```
+
+
+问题2 配置错误 应用工程配置错误，scheme(tencent10501996)没有配置，请检查appid并参考sdk使用文档
+
+![配置错误](https://ws1.sinaimg.cn/large/006tNbRwly1fuyemw9trwj30yi1pcwh0.jpg)
+
+原因：appid对应的bundleid不正确
+
+解决方法：去qq互联配置正确的bundleid
 
 参考链接1 [QQ原生三方登录](https://www.jianshu.com/p/456cbc0dbf4d)
