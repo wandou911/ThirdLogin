@@ -15,6 +15,7 @@
   
 2.设定授权回调页
   ![授权](https://ws4.sinaimg.cn/large/006tNbRwly1fuwhlq29t2j31540nwk1k.jpg)
+  
 3.设定Apple ID 和 Bundle ID
   ![appid](https://ws4.sinaimg.cn/large/006tNbRwly1fuwhmhc2jcj315g0lyqaq.jpg)
   
@@ -160,8 +161,21 @@ AppDelegate.m
 ![白名单](https://ws2.sinaimg.cn/large/006tNbRwly1fux94mjsmwj30h30aq75r.jpg)
 
 问题2: SSO package or sign error 
+
 原因：bundleid 不正确
+
 解决方法：登陆(http://open.weibo.com) 后台设置应用bundleid 与项目的bundleid一致
+
+参考步骤3 设置应用bundleid
+
+问题3: redirect_uri_mismatch
+
+原因：未设置应用回调url或者url设置不正确
+
+解决方法：登陆(http://open.weibo.com) 后台设置应用bundleid 与项目的bundleid一致
+
+参考步骤2 设置应用回调页
+
 
 ### 3 QQ登陆
 
