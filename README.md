@@ -159,6 +159,10 @@ AppDelegate.m
 
 ![白名单](https://ws2.sinaimg.cn/large/006tNbRwly1fux94mjsmwj30h30aq75r.jpg)
 
+问题2: SSO package or sign error 
+原因：bundleid 不正确
+解决方法：登陆(http://open.weibo.com) 后台设置应用bundleid 与项目的bundleid一致
+
 ### 3 QQ登陆
 
 #### 一 登陆QQ互联申请appid(https://connect.qq.com)
