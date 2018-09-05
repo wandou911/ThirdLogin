@@ -351,7 +351,7 @@ ViewController.m
 
 问题2 配置错误 应用工程配置错误，scheme(tencent10501996)没有配置，请检查appid并参考sdk使用文档
 
-![配置错误](https://ws1.sinaimg.cn/large/006tNbRwly1fuyemw9trwj30yi1pcwh0.jpg)
+![配置错误](https://ws2.sinaimg.cn/large/006tNbRwly1fuyep4ghzpj30w60imq9e.jpg)
 
 原因：appid对应的bundleid不正确
 
